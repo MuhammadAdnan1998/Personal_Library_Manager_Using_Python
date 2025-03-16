@@ -38,7 +38,7 @@ python --version
 ```
 ### 2️⃣ Clone the Repository
 ```sh
-git clone https://github.com/yourusername/personal-library-manager.git
+git clone https://github.com/MuhammadAdnan1998/Personal_Library_Manager_Using_Python.git
 cd personal-library-manager
 ```
 ### 3️⃣ Run the Application
