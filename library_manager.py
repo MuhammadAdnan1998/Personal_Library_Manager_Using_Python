@@ -77,6 +77,30 @@ def search_book(library):
     else:
         print("No matching books found.")
 
+# Section: Display Functions
+def display_books(library):
+    """Display all books in the library."""
+    if not library:  # Check if library is empty
+        print("Your library is empty.")
+        return
+    
+    print("Your Library:")
+    for i, book in enumerate(library, 1):  # Loop through books
+        status = "Read" if book["read"] else "Unread"  # Convert read status to text
+        print(f"{i}. {book['title']} by {book['author']} ({book['year']}) - {book['genre']} - {status}")  # Display book details
+
+def display_statistics(library):
+    """Display statistics about the library."""
+    total_books = len(library)  # Get total number of books
+    read_books = sum(1 for book in library if book["read"])  # Count books marked as read
+    
+    if total_books == 0:  # If no books are in the library
+        print("No books in the library.")
+        return
+    
+    read_percentage = (read_books / total_books) * 100  # Calculate percentage of books read
+    print(f"Total books: {total_books}")
+    print(f"Percentage read: {read_percentage:.2f}%")  # Display percentage with two decimal places
 
 
 
