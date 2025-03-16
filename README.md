@@ -95,7 +95,7 @@ For any queries or suggestions, feel free to reach out:
 - 🐦 LinkedIn: [@muhammadadnan01](https://www.linkedin.com/in/muhammadadnan01/)
 
 ---
-🔖 *Tagging*: `python`, `library-management`, `book-tracker`, `json-storage`, `automation`, `CLI-tool`, 'python-library-manager' ,'book-management-system' ,'cli-application' , 'personal-library' , 'python-json-storage' , 'data-persistence' , 'book-tracker' , 'backup-handling' , 'reading-tracker' , 'command-line-tool' , 'library-automation' , 'book-organizer' , 'json-based-database' , 'file-handling' , 'python-cli-app'
+🔖 *Tagging*: `python`, `library-management`, `book-tracker`, `json-storage`, `automation`, `CLI-tool`
 
 Happy Coding! 🚀
 
