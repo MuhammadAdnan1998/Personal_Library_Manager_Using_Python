@@ -102,6 +102,46 @@ def display_statistics(library):
     print(f"Total books: {total_books}")
     print(f"Percentage read: {read_percentage:.2f}%")  # Display percentage with two decimal places
 
+# Section: Main Program Logic
+def main():
+    """Main function to run the Personal Library Manager."""
+    library = load_library()  # Load existing library data from file
+    
+    while True:
+        print("\nWelcome to your Personal Library Manager!")
+        print("1. Add a book")
+        print("2. Remove a book")
+        print("3. Search for a book")
+        print("4. Display all books")
+        print("5. Display statistics")
+        print("6. Exit")
+        
+        choice = input("Enter your choice: ")  # Get user menu selection
+        
+        if choice == "1":
+            add_book(library)  # Call function to add a book
+        elif choice == "2":
+            remove_book(library)  # Call function to remove a book
+        elif choice == "3":
+            search_book(library)  # Call function to search for a book
+        elif choice == "4":
+            display_books(library)  # Call function to display all books
+        elif choice == "5":
+            display_statistics(library)  # Call function to display statistics
+        elif choice == "6":
+            save_library(library)  # Save library before exiting
+            print("Library saved to file. Goodbye!")
+            break  # Exit the loop and terminate program
+        else:
+            print("Invalid choice, please try again.")  # Handle incorrect input
+
+
+
+
+
+
+
+
 
 
 # Section: Program Entry Point
