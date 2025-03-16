@@ -5,7 +5,7 @@ import shutil  # Importing shutil to create backup files
 LIBRARY_FILE = "library.json"  # Main file for storing book data
 BACKUP_FILE = "library_backup.json"  # Backup file in case of errors
 
-# Section: Load and Save Library Functions
+# Section: Load Library Functions
 def load_library():
     """Load the library from a file."""
     try:
@@ -14,6 +14,7 @@ def load_library():
     except (FileNotFoundError, json.JSONDecodeError):  # Handle errors if file is missing or corrupt
         return []  # Return an empty list if no valid data is found
 
+# Section: Save Library Functions
 def save_library(library):
     """Save the library to a file with backup handling."""
     try:
@@ -24,6 +25,57 @@ def save_library(library):
     with open(LIBRARY_FILE, "w") as file:  # Open the file in write mode
         json.dump(library, file, indent=4)  # Save the library data in a structured format
 
+# Section: Book Management Functions
+def add_book(library):
+    """Add a book to the library."""
+    title = input("Enter the book title: ")  # Get book title from user
+    author = input("Enter the author: ")  # Get author's name
+    
+    while True:
+        try:
+            year = int(input("Enter the publication year: "))  # Get publication year as an integer
+            break  # Exit loop if input is valid
+        except ValueError:
+            print("Invalid input. Please enter a valid year.")  # Handle non-integer input
+    
+    genre = input("Enter the genre: ")  # Get book genre
+    read_status = input("Have you read this book? (yes/no): ").strip().lower() == "yes"  # Get read status
+    
+    library.append({  # Add book details to the library list
+        "title": title,
+        "author": author,
+        "year": year,
+        "genre": genre,
+        "read": read_status
+    })
+    print("Book added successfully!")
+    save_library(library)  # Save the updated library to file
+
+def remove_book(library):
+    """Remove a book from the library by title."""
+    title = input("Enter the title of the book to remove: ")  # Get book title to remove
+    for book in library:
+        if book["title"].lower() == title.lower():  # Find the matching book
+            library.remove(book)  # Remove the book from the list
+            print("Book removed successfully!")
+            save_library(library)  # Save the updated library
+            return
+    print("Book not found!")
+
+def search_book(library):
+    """Search for a book by title or author."""
+    print("Search by: \n1. Title \n2. Author")
+    choice = input("Enter your choice: ")  # Get user choice for search criteria
+    query = input("Enter search term: ").strip().lower()  # Get search query and convert to lowercase
+    
+    results = [book for book in library if query in book["title"].lower() or query in book["author"].lower()]  # Filter books based on query
+    
+    if results:  # If matching books are found
+        for i, book in enumerate(results, 1):
+            status = "Read" if book["read"] else "Unread"  # Convert boolean to readable text
+            print(f"{i}. {book['title']} by {book['author']} ({book['year']}) - {book['genre']} - {status}")  # Display book details
+    else:
+        print("No matching books found.")
 
 
 
